@@ -37,7 +37,6 @@ for i in range(len(vx) - 1):
     norm_A = np.linalg.norm(A)
     norm_B = np.linalg.norm(B)
     
-    # Evitar errores de precisión con clip
     cos_theta = np.clip(dot_product / (norm_A * norm_B), -1.0, 1.0)
     angulo = np.degrees(np.arccos(cos_theta))
     angulos_giro.append(angulo)
@@ -48,18 +47,18 @@ plt.figure(figsize=(12, 7), facecolor='white')
 plt.quiver(x[:-1], y[:-1], vx, vy, angles='xy', scale_units='xy', scale=1, 
            color='teal', label='Vectores de desplazamiento', width=0.005)
 
-# Dibujamos los puntos GPS para referencia
+# Dibujos de los puntos GPS para referencia
 plt.scatter(x, y, color='crimson', s=15, label='Puntos registrados')
 
 plt.title('Reconstrucción de Trayectoria Física (Vectores)', fontsize=14)
 plt.xlabel('Eje X (metros)', fontsize=12)
 plt.ylabel('Eje Y (metros)', fontsize=12)
-plt.axis('equal') # Importante para que 1m en X sea igual a 1m en Y
+plt.axis('equal') 
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.legend()
 plt.show()
 
-# --- Resultados para el reporte ---
+# --- Resultados ---
 print("-" * 30)
 print(f"RESUMEN DE LA PRÁCTICA")
 print("-" * 30)
